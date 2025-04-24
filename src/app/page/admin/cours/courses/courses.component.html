@@ -1,0 +1,36 @@
+<div class="bg-[#f8fafc] min-h-screen p-8">
+
+    <!-- Header -->
+    <div class="flex items-center justify-between mb-8">
+        <h1 class="text-2xl font-semibold">Cours</h1>
+        <a href="/admin/courses/add"
+            class="flex items-center bg-[#c084fc] hover:bg-[#a855f7] text-white px-4 py-2 rounded text-sm font-medium">
+            <i class="fas fa-plus mr-2"></i> Ajouter un cours
+        </a>
+    </div>
+
+    <!-- Courses grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div *ngFor="let course of courses()" class="bg-white rounded-lg shadow border overflow-hidden">
+            <img [src]="course.imageUrl ? 'http://localhost:8080' + course.imageUrl : 'https://via.placeholder.com/400x200?text=Cours'"
+                [alt]="course.title" class="w-full h-48 object-cover" />
+
+            <div class="p-4">
+                <h2 class="text-lg font-semibold text-gray-900">{{ course.title }}</h2>
+                <p class="text-sm text-gray-600 mt-1">{{ course.description }}</p>
+
+                <div class="mt-4 flex items-center justify-end">
+                    <div class="flex items-center space-x-2">
+                        <a href="/admin/courses/{{course.id}}" class="text-blue-500 hover:text-blue-700">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <button (click)="onDelete(course.id)" class="text-red-500 hover:text-red-700">
+                            <i class="fas fa-trash-alt"></i>
+                    </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
