@@ -7,8 +7,9 @@ import { firstValueFrom, Observable } from 'rxjs';
 })
 export class CoursesService {
   private apiUrl = 'http://localhost:8080/api/courses';
+  private apiUrlCmt = 'http://localhost:8080/api/comments';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   createCourse(courseData: FormData): Observable<any> {
     const token = sessionStorage.getItem('authToken');
@@ -16,7 +17,7 @@ export class CoursesService {
       headers: { 'Authorization': `Bearer ${token}` }
     });
   }
-  
+
 
   getAllCourses(): Observable<Course[]> {
     const token = sessionStorage.getItem('authToken');
@@ -25,37 +26,30 @@ export class CoursesService {
     });
   }
 
-  // getCourseById(id: number): Observable<Course> {
-  //   const token = sessionStorage.getItem('authToken');
-  //   return this.http.get<Course>(`${this.apiUrl}/${id}`, {
-  //     headers: { 'Authorization': `Bearer ${token}` }
-  //   });
-  // }
-
-  // updateCourse(id: number, course: Course): Observable<any> {
-  //   const token = sessionStorage.getItem('authToken');
-  //   return this.http.put<any>(`${this.apiUrl}/${id}`, course, {
-  //     headers: { 'Authorization': `Bearer ${token}` }
-  //   });
-  // }
-
   updateCourse(id: number, data: FormData): Observable<any> {
     const token = sessionStorage.getItem('authToken');
     return this.http.put(`${this.apiUrl}/${id}`, data, {
       headers: { 'Authorization': `Bearer ${token}` }
     });
   }
-  
+
   getCourseById(id: number): Observable<any> {
     const token = sessionStorage.getItem('authToken');
     return this.http.get(`${this.apiUrl}/${id}`, {
       headers: { 'Authorization': `Bearer ${token}` }
     });
-  }  
+  }
 
   deleteCourse(id: number): Observable<any> {
     const token = sessionStorage.getItem('authToken');
     return this.http.delete<any>(`${this.apiUrl}/${id}`, {
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+  }
+
+  createComment(id: number, comment: any): Observable<any> {
+    const token = sessionStorage.getItem('authToken');
+    return this.http.post<any>(`${this.apiUrlCmt}/${id}`, comment, {
       headers: { 'Authorization': `Bearer ${token}` }
     });
   }

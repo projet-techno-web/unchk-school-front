@@ -1,0 +1,40 @@
+<div class="max-w-xl mx-auto bg-white rounded-lg shadow p-6 text-gray-800">
+    <!-- Title -->
+    <h2 class="text-xl font-semibold mb-4">Détails du compte</h2>
+
+    <!-- Informations personnelles -->
+    <div class="mb-6">
+        <div class="flex items-center text-purple-600 font-medium mb-2">
+            <i class="fas fa-user mr-2"></i>
+            <span>Informations personnelles</span>
+        </div>
+        <div class="grid grid-cols-2 gap-4 text-sm">
+            <div>
+                <p class="text-gray-500">Prénom</p>
+                <p>{{profil.lastName}}</p>
+            </div>
+            <div>
+                <p class="text-gray-500">Nom</p>
+                <p>{{profil.firstName}}</p>
+            </div>
+        </div>
+    </div>
+
+    <hr class="my-4">
+
+    <!-- Contact -->
+    <div class="mb-6">
+        <div class="flex items-center text-purple-600 font-medium mb-2">
+            <i class="fas fa-envelope mr-2"></i>
+            <span>Contact</span>
+        </div>
+        <div class="grid grid-cols-2 gap-4 text-sm">
+            <div>
+                <p class="text-gray-500">Email</p>
+                <p>{{profil.email}}</p>
+            </div>
+            
+        </div>
+    </div>
+
+    </div>

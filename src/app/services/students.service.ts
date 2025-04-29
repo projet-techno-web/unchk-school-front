@@ -44,6 +44,13 @@ export class StudentsService {
     });
   }
 
+  getMyProfil(): Observable<any> {
+    const token = sessionStorage.getItem('authToken');
+    return this.http.get(`${this.apiUrl}/me`, {
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+  }
+
   deleteStudent(id: number): Promise<any> {
     const token = sessionStorage.getItem('authToken');
     return firstValueFrom(this.http.delete<any>(`${this.apiUrl}/students/${id}`, {

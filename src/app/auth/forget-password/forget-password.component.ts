@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { Router } from 'express';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { firstValueFrom } from 'rxjs';
 import { FormsModule } from '@angular/forms';
@@ -20,12 +20,14 @@ export class ForgetPasswordComponent {
   constructor(
     private authService: AuthService,
     private toastr: ToastrService,
+    private router: Router
   ) {}
 
   async onForgetPassword() {
     try {
       await firstValueFrom(this.authService.forgetPassword(this.credentials().email));
       this.toastr.success('Un email de réinitialisation a été envoyé', 'Succès');
+      this.router.navigate(['/']);
     } catch (error: any) {
       if (error.error && error.error.message) {
         this.toastr.error(error.error.message, 'Erreur');

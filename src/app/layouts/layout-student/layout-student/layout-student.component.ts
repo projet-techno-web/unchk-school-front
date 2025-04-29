@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { HeaderComponent } from "../header/header.component";
 
 @Component({
   selector: 'app-layout-student',
-  imports: [],
+  standalone: true,
+  imports: [RouterOutlet, HeaderComponent],
   templateUrl: './layout-student.component.html',
   styleUrl: './layout-student.component.css'
 })

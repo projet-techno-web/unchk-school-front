@@ -46,7 +46,7 @@ export class LoginComponent {
       if (response.user.role === 'ADMIN') {
         this.router.navigate(['/admin/dashboard']);
       } else {
-        this.router.navigate(['/student']);
+        this.router.navigate(['/student/my-courses']);
       }
 
     } catch (error: any) {

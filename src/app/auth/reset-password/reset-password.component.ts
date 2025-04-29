@@ -38,7 +38,7 @@ export class ResetPasswordComponent {
         confirmPassword: this.credentials().confirmPassword
       }, this.token()));
       this.toastr.success('Mot de passe réinitialisé', 'Succès');
-      this.router.navigate(['/login']);
+      this.router.navigate(['/']);
     } catch (error: any) {
       if (error.error && error.error.message) {
         this.errorMessage.set(error.error.message);

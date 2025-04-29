@@ -55,14 +55,14 @@ export class AuthService {
 
   // Mot de passe oublié
   forgetPassword(email: string): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/password-forget`, { email });
+    return this.http.post<any>(`${this.apiUrl}/forgot-password`, { email });
   }
 
   // Réinitialisation du mot de passe
   resetPassword(credentials: User, token: string): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/reset-password?token=${token}`, credentials);
   }
-
+  
   // Méthode pour se déconnecter
   logout() {
     sessionStorage.removeItem('authToken');

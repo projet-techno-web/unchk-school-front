@@ -28,7 +28,7 @@ export class RegisterComponent {
     try {
       await firstValueFrom(this.authService.register(this.credentials()));
       this.toastr.success('Inscription réussie', 'Succès');
-      this.router.navigate(['/login']);
+      this.router.navigate(['/']);
     } catch (error: any) {
       if (error.error && error.error.message) {
         this.errorMessage.set(error.error.message);

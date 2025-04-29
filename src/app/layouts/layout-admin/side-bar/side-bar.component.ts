@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-side-bar',
@@ -8,5 +9,14 @@ import { Component } from '@angular/core';
   styleUrl: './side-bar.component.css'
 })
 export class SideBarComponent {
+constructor(private router: Router) {}
 
+  ngOnInit(): void {
+    // Initialisation si nécessaire
+  }
+
+  logout(): void {
+    sessionStorage.clear();
+    this.router.navigate(['/']);
+  }
 }

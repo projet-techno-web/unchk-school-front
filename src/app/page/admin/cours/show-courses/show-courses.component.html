@@ -1,1 +1,30 @@
-<p>show-courses works!</p>
+<div *ngIf="course">
+  <div class="bg-white rounded-lg shadow border overflow-hidden">
+    <img
+      [src]="course.imageUrl ? 'http://localhost:8080' + course.imageUrl : 'https://via.placeholder.com/400x200?text=Cours'"
+      [alt]="course.title"
+      class="w-full h-48 object-cover"
+    />
+
+    <div class="p-4">
+      <h2 class="text-lg font-semibold text-gray-900">{{ course.title }}</h2>
+      <p class="text-sm text-gray-600 mt-1">{{ course.description }}</p>
+    </div>
+  </div>
+
+  <div class="max-w-2xl mx-auto bg-white rounded-lg shadow px-6 py-8 mt-8">
+    <h3 class="text-sm font-semibold text-gray-700 mb-4">Commentaires des étudiants</h3>
+
+    <div class="space-y-4 text-sm" *ngIf="comments().length; else noComments">
+      <div *ngFor="let comment of comments()" class="bg-white border rounded-md p-4">
+        <p class="font-semibold text-gray-800">{{ comment.author }}</p>
+        <p class="text-xs text-gray-500 mb-2">{{ comment.created_at }}</p>
+        <p class="text-gray-700">{{ comment.content }}</p>
+      </div>
+    </div>
+
+    <ng-template #noComments>
+      <p class="text-gray-500 italic">Aucun commentaire pour ce cours.</p>
+    </ng-template>
+  </div>
+</div>

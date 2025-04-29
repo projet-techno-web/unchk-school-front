@@ -1,11 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
-  imports: [],
+  standalone: true,
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
 
+  constructor(private router: Router) {}
+
+  ngOnInit(): void {
+    // Initialisation si nécessaire
+  }
+
+  logout(): void {
+    sessionStorage.clear();
+    this.router.navigate(['/']);
+  }
 }
